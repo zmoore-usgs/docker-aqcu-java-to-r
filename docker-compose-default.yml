@@ -1,0 +1,26 @@
+---
+  version: '3.5'
+
+  secrets:
+    tomcat_ssl_crt:
+      file: ./certificates/tomcat/tomcat-wildcard-dev.crt
+    tomcat_ssl_key:
+      file: ./certificates/tomcat/tomcat-wildcard-dev.key
+    rserve_service_password:
+      file: ./secrets/rservePassword.txt
+      
+  services:
+    aqcu-java-to-r:
+      build: .
+      image: aqcu-java-to-r-service
+      ports:
+        - "443:443"
+      secrets:
+        - source: tomcat_ssl_crt
+          target: /tomcat-wildcard-ssl.crt
+        - source: tomcat_ssl_key
+          target: /tomcat-wildcard-ssl.key
+        - source: rserve_service_password
+          target: /rservePassword.txt
+      env_file:
+        - docker-compose-default.env
