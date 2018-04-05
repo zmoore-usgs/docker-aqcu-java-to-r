@@ -31,6 +31,7 @@ ENV ribbonMaxAutoRetries=3
 ENV ribbonConnectTimeout=1000
 ENV ribbonReadTimeout=10000
 ENV hystrixThreadTimeout=10000000
+ENV RSERVE_SERVICE_PASSWORD_PATH=/rservePassword.txt
 ENV TOMCAT_CERT_PATH=/tomcat-wildcard-ssl.crt
 ENV TOMCAT_KEY_PATH=/tomcat-wildcard-ssl.key
 

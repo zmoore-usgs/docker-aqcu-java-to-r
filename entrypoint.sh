@@ -20,6 +20,6 @@ if [ -d "${CERT_IMPORT_DIRECTORY}" ]; then
   done
 fi
 
-java -Djava.security.egd=file:/dev/./urandom -DkeystorePassword=$KEYSTORE_PASSWORD -jar app.jar $@
+java -Djava.security.egd=file:/dev/./urandom -DkeystorePassword=$KEYSTORE_PASSWORD -DrserveServicePassword=$(cat ${RSERVE_SERVICE_PASSWORD_PATH}) -jar app.jar $@
 
 exec env "$@"
