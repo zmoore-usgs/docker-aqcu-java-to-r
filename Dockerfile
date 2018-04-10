@@ -20,18 +20,22 @@ RUN ["chmod", "+x", "entrypoint.sh"]
 
 #Default ENV Values
 ENV requireSsl=true
-ENV serverPort=443
+ENV serverPort=7500
 ENV serverContextPath=/
 ENV springFrameworkLogLevel=info
+ENV SPRING_CLOUD_CONFIG_ENABLED=false
+ENV rserveHost=localhost
+ENV rservePort=6311
+ENV rserveTimeout=120000
+ENV rserveRetryInterval=5000
 ENV keystoreLocation=/localkeystore.p12
 ENV keystorePassword=changeme
 ENV keystoreSSLKey=tomcat
-
 ENV ribbonMaxAutoRetries=3
 ENV ribbonConnectTimeout=1000
 ENV ribbonReadTimeout=10000
 ENV hystrixThreadTimeout=10000000
-ENV RSERVE_SERVICE_PASSWORD_PATH=/rservePassword.txt
+ENV RSERVE_PWD_PATH=/Rserve.pwd
 ENV TOMCAT_CERT_PATH=/tomcat-wildcard-ssl.crt
 ENV TOMCAT_KEY_PATH=/tomcat-wildcard-ssl.key
 

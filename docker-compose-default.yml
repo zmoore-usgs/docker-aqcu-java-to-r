@@ -6,8 +6,8 @@
       file: ./certificates/tomcat/tomcat-wildcard-dev.crt
     tomcat_ssl_key:
       file: ./certificates/tomcat/tomcat-wildcard-dev.key
-    rserve_service_password:
-      file: ./secrets/rservePassword.txt
+    rserve_pwd:
+      file: ./secrets/Rserve.pwd
       
   services:
     aqcu-java-to-r:
@@ -20,7 +20,7 @@
           target: /tomcat-wildcard-ssl.crt
         - source: tomcat_ssl_key
           target: /tomcat-wildcard-ssl.key
-        - source: rserve_service_password
-          target: /rservePassword.txt
+        - source: rserve_pwd
+          target: /Rserve.pwd
       env_file:
         - docker-compose-default.env
