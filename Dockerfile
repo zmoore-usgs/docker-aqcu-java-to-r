@@ -20,6 +20,6 @@ RUN ["chmod", "+x", "launch-app.sh"]
 #Default ENV Values
 ENV serverPort=7500
 
-ENV RSERVE_PWD_PATH=/rservePassword.txt
+ENV RSERVE_PWD_PATH=/Rserve.pwd
 
 ENV HEALTHY_RESPONSE_CONTAINS='{"status":{"code":"UP","description":""}'
