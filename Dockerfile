@@ -1,4 +1,4 @@
-FROM aqcu-base:latest
+FROM cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-base:latest
 
 RUN set -x & \
   apk update && \
