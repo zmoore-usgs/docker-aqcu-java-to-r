@@ -16,4 +16,4 @@ ENV serverPort=7500
 
 ENV RSERVE_PWD_PATH=/Rserve.pwd
 
-ENV HEALTHY_RESPONSE_CONTAINS='{"status":{"code":"UP","description":""}'
+ENV HEALTHY_RESPONSE_CONTAINS='{"status": "UP"}'
