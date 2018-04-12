@@ -9,7 +9,7 @@ RUN set -x & \
 # Pull Artifact
 ARG repo_name=aqcu-maven-centralized
 ARG artifact_id=aqcu-java-to-r
-ARG artifact_version=LATEST
+ARG artifact_version=0.0.1-SNAPSHOT
 
 RUN ./pull-from-artifactory.sh ${repo_name} gov.usgs.aqcu ${artifact_id} ${artifact_version} app.jar
 
