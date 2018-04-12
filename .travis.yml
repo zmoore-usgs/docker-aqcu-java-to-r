@@ -28,7 +28,7 @@ before_install:
 
 install:
   - docker build -t aqcu-java-to-r .
-  - docker-compose -f docker-compose-default.yml up -d --build
+  - docker-compose -f docker-compose.yml up -d --build
 
 script:
   - docker ps | grep -q aqcu-java-to-r
