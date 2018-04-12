@@ -1,11 +1,5 @@
 FROM cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-base:latest
 
-RUN set -x & \
-  apk update && \
-  apk upgrade && \
-  apk add --no-cache curl && \
-  apk --no-cache add openssl
-  
 # Pull Artifact
 ARG repo_name=aqcu-maven-centralized
 ARG artifact_id=aqcu-java-to-r
