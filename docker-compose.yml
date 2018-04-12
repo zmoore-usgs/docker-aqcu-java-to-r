@@ -14,7 +14,7 @@
       build: .
       image: aqcu-java-to-r-service
       ports:
-        - "443:443"
+        - "7500:7500"
       secrets:
         - source: tomcat_ssl_crt
           target: /tomcat-wildcard-ssl.crt
