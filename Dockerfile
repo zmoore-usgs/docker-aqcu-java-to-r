@@ -1,44 +1,19 @@
-FROM openjdk:8-jdk-alpine
+FROM cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-base:latest
 
-RUN set -x & \
-  apk update && \
-  apk upgrade && \
-  apk add --no-cache curl && \
-  apk --no-cache add openssl
-  
+# Pull Artifact
 ARG repo_name=aqcu-maven-centralized
 ARG artifact_id=aqcu-java-to-r
-ARG artifact_version=LATEST
-
-ADD pull-from-artifactory.sh pull-from-artifactory.sh
-RUN ["chmod", "+x", "pull-from-artifactory.sh"]
+ARG artifact_version=0.0.1-SNAPSHOT
 
 RUN ./pull-from-artifactory.sh ${repo_name} gov.usgs.aqcu ${artifact_id} ${artifact_version} app.jar
 
-ADD entrypoint.sh entrypoint.sh
-RUN ["chmod", "+x", "entrypoint.sh"]
+# Add Launch Script
+ADD launch-app.sh launch-app.sh
+RUN ["chmod", "+x", "launch-app.sh"]
 
 #Default ENV Values
-ENV requireSsl=true
 ENV serverPort=7500
-ENV serverContextPath=/
-ENV springFrameworkLogLevel=info
-ENV SPRING_CLOUD_CONFIG_ENABLED=false
-ENV rserveHost=localhost
-ENV rservePort=6311
-ENV rserveTimeout=120000
-ENV rserveRetryInterval=5000
-ENV keystoreLocation=/localkeystore.p12
-ENV keystorePassword=changeme
-ENV keystoreSSLKey=tomcat
-ENV ribbonMaxAutoRetries=3
-ENV ribbonConnectTimeout=1000
-ENV ribbonReadTimeout=10000
-ENV hystrixThreadTimeout=10000000
+
 ENV RSERVE_PWD_PATH=/Rserve.pwd
-ENV TOMCAT_CERT_PATH=/tomcat-wildcard-ssl.crt
-ENV TOMCAT_KEY_PATH=/tomcat-wildcard-ssl.key
 
-ENTRYPOINT [ "/entrypoint.sh" ]
-
-HEALTHCHECK CMD curl -k "https://127.0.0.1:${serverPort}${serverContextPath}/health" | grep -q '{"status":"UP"}' || exit 1
+ENV HEALTHY_RESPONSE_CONTAINS='{"status":"UP"}'
