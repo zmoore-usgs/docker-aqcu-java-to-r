@@ -13,6 +13,7 @@ RUN ["chmod", "+x", "launch-app.sh"]
 
 #Default ENV Values
 ENV serverPort=7500
+ENV maxHeapSpace=300M
 
 ENV RSERVE_PWD_PATH=/Rserve.pwd
 
