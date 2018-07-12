@@ -1,4 +1,4 @@
-FROM cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-base:latest
+FROM cidasdpdasartip.cr.usgs.gov:8447/wma/wma-spring-boot-base:latest
 
 # Pull Artifact
 ARG repo_name=aqcu-maven-centralized
