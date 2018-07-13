@@ -22,9 +22,9 @@ before_install:
   # Run NGINX server within Travis
   - docker run -d -p 443:443 -p 80:80 -v ${PWD}/.travis/nginx.conf:/etc/nginx/nginx.conf -v ${PWD}/.travis/wildcard.crt:/etc/nginx/wildcard.crt -v ${PWD}/.travis/wildcard.key:/etc/nginx/wildcard.key nginx:latest && sleep 5
   # Pull against localhost - will be proxied by NGINX to Artifactory
-  - docker pull localhost/wma/wma-spring-boot-base:latest
+  - docker pull localhost/wma/wma-spring-boot-base:0.0.1
   # Tag the pulled image to match the internal name of the Artifactory server
-  - docker tag localhost/wma/wma-spring-boot-base:latest cidasdpdasartip.cr.usgs.gov:8447/wma/wma-spring-boot-base:latest
+  - docker tag localhost/wma/wma-spring-boot-base:0.0.1 cidasdpdasartip.cr.usgs.gov:8447/wma/wma-spring-boot-base:0.0.1
 
 install:
   - docker build -t aqcu-java-to-r .
