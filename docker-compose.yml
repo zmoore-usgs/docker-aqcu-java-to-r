@@ -6,21 +6,18 @@
       file: ./certificates/tomcat/tomcat-wildcard-dev.crt
     tomcat_ssl_key:
       file: ./certificates/tomcat/tomcat-wildcard-dev.key
-    rserve_pwd:
-      file: ./secrets/Rserve.pwd
-      
+
   services:
-    aqcu-java-to-r:
+    aqcu-java-to-r-service:
       build: .
       image: aqcu-java-to-r-service
       ports:
         - "7500:7500"
       secrets:
         - source: tomcat_ssl_crt
-          target: /tomcat-wildcard-ssl.crt
+          target: /home/spring/tomcat-wildcard-ssl.crt
         - source: tomcat_ssl_key
-          target: /tomcat-wildcard-ssl.key
-        - source: rserve_pwd
-          target: /Rserve.pwd
+          target: /home/spring/tomcat-wildcard-ssl.key
       env_file:
-        - docker-compose.env
+        - config.env
+        - secrets.env
