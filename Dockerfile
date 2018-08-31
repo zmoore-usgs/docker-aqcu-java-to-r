@@ -1,6 +1,6 @@
 FROM cidasdpdasartip.cr.usgs.gov:8447/wma/wma-spring-boot-base:latest
 
-ARG artifact_version=0.0.2
+ARG artifact_version=0.0.3-SNAPSHOT
 ENV serverPort=7500
 ENV HEALTHY_RESPONSE_CONTAINS='{"status":"UP"}'
 
