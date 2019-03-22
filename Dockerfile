@@ -1,6 +1,7 @@
 FROM usgswma/wma-spring-boot-base:8-jre-slim-0.0.4
 
-ARG artifact_version=0.0.3-SNAPSHOT
+# TODO: Change artifact_version back to an ARG once we update to a base image version > 0.0.4
+ENV artifact_version=0.0.3-SNAPSHOT
 ENV serverPort=7500
 ENV HEALTHY_RESPONSE_CONTAINS='{"status":"UP"}'
 
